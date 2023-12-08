@@ -6,18 +6,23 @@
         xmlns:local="clr-namespace:BTS_LJ2_Projekt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+
     <Grid>
-        
-        <Button Content="Button" HorizontalAlignment="Left" Height="69" Margin="220,136,0,0" VerticalAlignment="Top" Width="88">
+
+        <Button Content="Button" HorizontalAlignment="Left" Height="20" Margin="296,266,0,0" VerticalAlignment="Top" Width="155">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
+
             </Button.Resources>
         </Button>
-        
+        <PasswordBox HorizontalAlignment="Left" Margin="296,230,0,0" VerticalAlignment="Top"  Width="155"/>
+        <TextBox HorizontalAlignment="Left" Margin="296,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="296,160,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label Content="Passwort" HorizontalAlignment="Left" Margin="296,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="-0.948,0.425"/>
+
     </Grid>
-    
+
 </Window>
     
