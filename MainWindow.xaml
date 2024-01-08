@@ -5,24 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BTS_LJ2_Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="425" Width="580">
 
-    <Grid>
+    <Grid Margin="0,0,0,0" Background="#242424">
+        <Grid x:Name="Password" HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="580" Visibility="Hidden">
+            <Button Content="Login" HorizontalAlignment="Center" Height="20" Margin="0,230,0,0" VerticalAlignment="Top" Width="156">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
 
-        <Button Content="Button" HorizontalAlignment="Left" Height="20" Margin="296,266,0,0" VerticalAlignment="Top" Width="155">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
+                </Button.Resources>
+            </Button>
+            <PasswordBox HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top"  Width="156"/>
+            <TextBox HorizontalAlignment="Center" Margin="0,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+            <Label Content="Username" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="70" Foreground="White"/>
+            <Label Content="Passwort" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top" Width="60" Foreground="White"/>
+        </Grid>
+        <Grid x:Name="Content" HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="580">
+            <Grid x:Name="Sidebar" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="8,8,8,8" Grid.Column="0">&gt;
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="Collapsed" Width="Auto" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Grid.Column="0">Auswahl
+                </Button>
 
-            </Button.Resources>
-        </Button>
-        <PasswordBox HorizontalAlignment="Left" Margin="296,230,0,0" VerticalAlignment="Top"  Width="155"/>
-        <TextBox HorizontalAlignment="Left" Margin="296,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
-        <Label Content="Username" HorizontalAlignment="Left" Margin="296,160,0,0" VerticalAlignment="Top" Width="77"/>
-        <Label Content="Passwort" HorizontalAlignment="Left" Margin="296,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="-0.948,0.425"/>
 
+            </Grid>
+        </Grid>
     </Grid>
-
 </Window>
     
