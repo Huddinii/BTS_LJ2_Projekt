@@ -25,19 +25,53 @@
         <Grid x:Name="Content" HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="580">
             <Grid x:Name="Sidebar" HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="80*"/>
                 </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <!--Option 1-->
+                    <!--<Grid.RowDefinitions>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="25*"/>
+                    </Grid.RowDefinitions>-->
+
+
+                    <Grid Grid.Row="0">
+                        <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
+                        <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="8,8,8,8" Grid.Column="0">&gt;
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Button x:Name="Auswahl"  Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="Visible" Width="Auto" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Grid.Column="0" Margin="0,67,0,0">Auswahl
+                        </Button>
+                    </Grid>
+
+                    <!--Option 2-->
+                    <!--<StackPanel Orientation="Vertical">
+                        <Button Content="Test 1"/>
+                        <Button Content="Test 1"/>
+                        <Button Content="Test 1"/>
+                        <Button Content="Test 1"/>
+                        <Button Content="Test 1"/>
+                    </StackPanel>-->
+                </Grid>
+                <!--
                 <Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>
-                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="8,8,8,8" Grid.Column="0">&gt;
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="Collapsed" Width="Auto" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Grid.Column="0">Auswahl
-                </Button>
+                
+                -->
+
+
+
 
 
             </Grid>
