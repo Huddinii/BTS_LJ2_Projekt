@@ -37,13 +37,15 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,10,0,0">&gt;
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
+                    <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
+                    </Border>
                     <!--Option 1-->
                     <!--<Grid.RowDefinitions>
                         <RowDefinition Height="25*"/>
@@ -55,15 +57,26 @@
 
                     <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        
-                        <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
-                        </Border>
-
-                        <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,67,0,0" HorizontalAlignment="Stretch">Auswahl
+                        <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
                         </Button>
-                        <Button x:Name="Profile" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,117,0,0" HorizontalAlignment="Stretch">Profile
+                        <Button x:Name="Profile" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
                         </Button>
-                        <Button x:Name="Gruppe" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,167,0,0" HorizontalAlignment="Stretch">Gruppe
+                        <Button x:Name="Gruppe" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
                         </Button>
                     </Grid>
 
@@ -78,29 +91,30 @@
                 </Grid>
             </Grid>
             <Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Center">
-                    <Grid x:Name="Choices" HorizontalAlignment="Right" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="25*"/>
-                            <ColumnDefinition Width="25*"/>
-                            <ColumnDefinition Width="25*"/>
-                            <ColumnDefinition Width="25*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50*"/>
-                            <RowDefinition Height="50*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Column="0" Grid.Row="0">
-                        <Rectangle Fill="White" Width="100">
+                <Grid x:Name="Choices" HorizontalAlignment="Right" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <Rectangle Width="100"/>
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5">
                             
-                        </Rectangle>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="0">
-                        </Grid>
-                        <Grid Grid.Column="2" Grid.Row="0">
-                        </Grid>
-                        <Grid Grid.Column="3" Grid.Row="0">
-                        </Grid>
+                        </Border>
                     </Grid>
+                    <Grid Grid.Column="1" Grid.Row="0">
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="0">
+                    </Grid>
+                    <Grid Grid.Column="3" Grid.Row="0">
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
