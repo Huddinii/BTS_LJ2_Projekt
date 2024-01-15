@@ -27,14 +27,14 @@ namespace BTS_LJ2_Projekt
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (rect.Visibility == System.Windows.Visibility.Collapsed)
+            if (Sidebar_Buttons.Visibility == System.Windows.Visibility.Collapsed)
             {
-                rect.Visibility = System.Windows.Visibility.Visible;
+                Sidebar_Buttons.Visibility = System.Windows.Visibility.Visible;
                 (sender as Button).Content = "<";
             }
             else
             {
-                rect.Visibility = System.Windows.Visibility.Collapsed;
+                Sidebar_Buttons.Visibility = System.Windows.Visibility.Collapsed;
                 (sender as Button).Content = ">";
             }
         }

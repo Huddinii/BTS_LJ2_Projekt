@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BTS_LJ2_Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="425" Width="580">
+        Title="MainWindow" Height="425" Width="600"
+        x:Name="Window">
 
     <Grid Margin="0,0,0,0" Background="#242424">
-        <Grid x:Name="Password" HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="580" Visibility="Hidden">
+        <Grid x:Name="Password" HorizontalAlignment="Center" Width="{Binding ElementName=MainWindow, Path=ActualWidth}" Margin="0,0,0,-1" Visibility="Hidden">
             <Button Content="Login" HorizontalAlignment="Center" Height="20" Margin="0,230,0,0" VerticalAlignment="Top" Width="156">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -22,15 +23,27 @@
             <Label Content="Username" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="70" Foreground="White"/>
             <Label Content="Passwort" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top" Width="60" Foreground="White"/>
         </Grid>
-        <Grid x:Name="Content" HorizontalAlignment="Center" Height="410" VerticalAlignment="Center" Width="580">
-            <Grid x:Name="Sidebar" HorizontalAlignment="Left">
+        <Grid x:Name="Content" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="80*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" x:Name="Sidebar" HorizontalAlignment="Left">
+
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-
+                    <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,10,0,0">&gt;
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                     <!--Option 1-->
                     <!--<Grid.RowDefinitions>
                         <RowDefinition Height="25*"/>
@@ -40,19 +53,17 @@
                     </Grid.RowDefinitions>-->
 
 
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="8,8,8,8" Grid.Column="0">&gt;
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Button.Resources>
-                        </Button>
-                    </Grid>
+                        
+                        <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
+                        </Border>
 
-                    <Grid Grid.Row="1">
-                        <Button x:Name="Auswahl"  Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="Visible" Width="Auto" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Grid.Column="0" Margin="0,67,0,0">Auswahl
+                        <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,67,0,0" HorizontalAlignment="Stretch">Auswahl
+                        </Button>
+                        <Button x:Name="Profile" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,117,0,0" HorizontalAlignment="Stretch">Profile
+                        </Button>
+                        <Button x:Name="Gruppe" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Visibility="{Binding ElementName=Sidebar,Path=IsVisible}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="0,167,0,0" HorizontalAlignment="Stretch">Gruppe
                         </Button>
                     </Grid>
 
@@ -65,15 +76,31 @@
                         <Button Content="Test 1"/>
                     </StackPanel>-->
                 </Grid>
-                <!--
-                <Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>
-                
-                -->
-
-
-
-
-
+            </Grid>
+            <Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Center">
+                    <Grid x:Name="Choices" HorizontalAlignment="Right" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0" Grid.Row="0">
+                        <Rectangle Fill="White" Width="100">
+                            
+                        </Rectangle>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="0">
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="0">
+                        </Grid>
+                        <Grid Grid.Column="3" Grid.Row="0">
+                        </Grid>
+                    </Grid>
             </Grid>
         </Grid>
     </Grid>

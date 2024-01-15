@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BTS_LJ2_Projekt
 {
-    internal class VoteEssen:DataInterface
+    internal class VoteEssen
     {
         public VoteEssen() 
         {
