@@ -7,7 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="425" Width="600"
         x:Name="Window">
-
+    <Window.Resources>
+        <Style x:Key="roundedCorners" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Border.CornerRadius" Value="10"/>
+                </Style>
+                    
+            </Style.Resources>
+            
+        </Style>
+        
+    </Window.Resources>
     <Grid Margin="0,0,0,0" Background="#242424">
         <Grid x:Name="Password" HorizontalAlignment="Center" Width="{Binding ElementName=MainWindow, Path=ActualWidth}" Margin="0,0,0,-1" Visibility="Hidden">
             <Button Content="Login" HorizontalAlignment="Center" Height="20" Margin="0,230,0,0" VerticalAlignment="Top" Width="156">
@@ -37,12 +48,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Button x:Name="SidebarButton" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="10"/>
-                            </Style>
-                        </Button.Resources>
+                    <Button x:Name="SidebarButton" Style="{StaticResource roundedCorners}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
                     </Button>
                     <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
                     </Border>
@@ -57,26 +63,11 @@
 
                     <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        <Button x:Name="Auswahl" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Button.Resources>
+                        <Button x:Name="Auswahl" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
                         </Button>
-                        <Button x:Name="Profile" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Button.Resources>
+                        <Button x:Name="Profile" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile                            
                         </Button>
-                        <Button x:Name="Gruppe" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
-                            <Button.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Button.Resources>
+                        <Button x:Name="Gruppe" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
                         </Button>
                     </Grid>
 
@@ -103,16 +94,25 @@
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Column="0" Grid.Row="0">
-                        <Rectangle Width="100"/>
+                        <Rectangle Width="120"/>
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5">
                             
                         </Border>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="0">
+                        <Rectangle Width="120"/>
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="0">
+                        <Rectangle Width="120"/>
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="0">
+                        <Rectangle Width="120"/>
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+
                     </Grid>
                 </Grid>
             </Grid>
