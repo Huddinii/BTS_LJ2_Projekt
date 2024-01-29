@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BTS_LJ2_Projekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="425" Width="600"
+        Title="MainWindow" Height="1080" Width="1920"
         x:Name="Window">
     <Window.Resources>
         <Style x:Key="roundedCorners" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
@@ -42,12 +42,12 @@
             <Grid Grid.Column="0" x:Name="Sidebar" HorizontalAlignment="Left">
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Button x:Name="SidebarButton" Style="{StaticResource roundedCorners}" Width="32" Height="32" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
+                    <Button x:Name="SidebarButton" Style="{StaticResource roundedCorners}" Width="40" Height="40" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
                     </Button>
                     <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
                     </Border>
@@ -62,11 +62,11 @@
 
                     <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        <Button x:Name="Auswahl" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
+                        <Button x:Name="Auswahl" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
                         </Button>
-                        <Button x:Name="Profile" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile                            
+                        <Button x:Name="Profile" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile                            
                         </Button>
-                        <Button x:Name="Gruppe" Style="{StaticResource roundedCorners}" Height="32" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
+                        <Button x:Name="Gruppe" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
                         </Button>
                     </Grid>
 
@@ -81,46 +81,154 @@
                 </Grid>
             </Grid>
             <Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Stretch">
-                <Grid x:Name="Choices" HorizontalAlignment="Stretch">
+                <Grid.Resources>
+                    <Style x:Key="GridButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=roundedCorners}">
+                        <Setter Property="Width" Value="Auto"/>
+                        <Setter Property="MinWidth" Value="410"/>
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Margin" Value="20,0,20,20"/>
+                        <Setter Property="VerticalAlignment" Value="Bottom"/>
+                        <Setter Property="Background" Value="Gray"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="Content" Value="Wählen"/>
+                    </Style>
+                    <Style x:Key="GridLabels" TargetType="Label">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid x:Name="Choices">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="auto" MaxWidth="450"/>
+                        <ColumnDefinition Width="auto" MaxWidth="450"/>
+                        <ColumnDefinition Width="auto" MaxWidth="450"/>
+                        <ColumnDefinition Width="Auto" MaxWidth="450"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*"/>
                         <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Column="0" Grid.Row="0">
-                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10">
+                    <Grid Grid.Column="0" Grid.Row="0" Width="Auto">
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5">
+                           
+                        </Border>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
-                                <Image Width="100" Height="60"></Image>
-                                <Label Content="Name:" FontSize="8" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                                <Label Content="Adresse:" FontSize="8" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                                <Label Content="Speisekarte:" FontSize="8" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                                <Label Content="Stimmen:" FontSize="8" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                                
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
-                        <Button x:Name="Test" Style="{StaticResource roundedCorners}" Height="16"  FontSize="8" VerticalAlignment="Bottom" Background="Gray" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,0,10,10" HorizontalAlignment="Stretch">
-                            Wählen
-                        </Button>
+                        <Button x:Name="Vote1" Style="{StaticResource GridButton}"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="0" Width="Auto" HorizontalAlignment="Stretch">
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
-                        
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
+
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote2"  Style="{StaticResource GridButton}"/>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="0">
-                        <Rectangle Width="Auto" HorizontalAlignment="Stretch" Stretch="UniformToFill"/>
+                        
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
 
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote3" Style="{StaticResource GridButton}"/>
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="0">
-                        <Rectangle Width="Auto" HorizontalAlignment="Stretch" Stretch="UniformToFill"/>
+                        
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
 
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote4" Style="{StaticResource GridButton}"/>
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="1" Width="Auto" HorizontalAlignment="Stretch">
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
+
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote5" Style="{StaticResource GridButton}"/>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="1" Width="Auto" HorizontalAlignment="Stretch">
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
+
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote6" Style="{StaticResource GridButton}"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="1">
+
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
+
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote7" Style="{StaticResource GridButton}"/>
+                    </Grid>
+                    <Grid Grid.Column="3" Grid.Row="1">
+
+                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
+                            <StackPanel.Children>
+
+                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+
+                            </StackPanel.Children>
+                        </StackPanel>
+                        <Button x:Name="Vote8" Style="{StaticResource GridButton}"/>
                     </Grid>
                 </Grid>
             </Grid>
