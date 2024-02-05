@@ -30,9 +30,9 @@ namespace BTS_LJ2_Projekt {
         
         private VoteDataTable tableVote;
         
-        private global::System.Data.DataRelation relationFK_Vote_Restaurants;
+        private global::System.Data.DataRelation relationFK_User_Vote;
         
-        private global::System.Data.DataRelation relationFK_Vote_User;
+        private global::System.Data.DataRelation relationFK_Vote_Restaurants;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -246,8 +246,8 @@ namespace BTS_LJ2_Projekt {
                     this.tableVote.InitVars();
                 }
             }
+            this.relationFK_User_Vote = this.Relations["FK_User_Vote"];
             this.relationFK_Vote_Restaurants = this.Relations["FK_Vote_Restaurants"];
-            this.relationFK_Vote_User = this.Relations["FK_Vote_User"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -264,14 +264,14 @@ namespace BTS_LJ2_Projekt {
             base.Tables.Add(this.tableUser);
             this.tableVote = new VoteDataTable();
             base.Tables.Add(this.tableVote);
+            this.relationFK_User_Vote = new global::System.Data.DataRelation("FK_User_Vote", new global::System.Data.DataColumn[] {
+                        this.tableVote.USR_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableUser.IDColumn}, false);
+            this.Relations.Add(this.relationFK_User_Vote);
             this.relationFK_Vote_Restaurants = new global::System.Data.DataRelation("FK_Vote_Restaurants", new global::System.Data.DataColumn[] {
-                        this.tableRestaurants.NameColumn}, new global::System.Data.DataColumn[] {
-                        this.tableVote.RES_NAMEColumn}, false);
+                        this.tableVote.RES_IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRestaurants.IDColumn}, false);
             this.Relations.Add(this.relationFK_Vote_Restaurants);
-            this.relationFK_Vote_User = new global::System.Data.DataRelation("FK_Vote_User", new global::System.Data.DataColumn[] {
-                        this.tableUser.UsernameColumn}, new global::System.Data.DataColumn[] {
-                        this.tableVote.USR_NAMEColumn}, false);
-            this.Relations.Add(this.relationFK_Vote_User);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -487,9 +487,9 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RestaurantsRow FindByName(string Name) {
+            public RestaurantsRow FindByID(int ID) {
                 return ((RestaurantsRow)(this.Rows.Find(new object[] {
-                            Name})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -527,14 +527,14 @@ namespace BTS_LJ2_Projekt {
                 this.columnWebsite = new global::System.Data.DataColumn("Website", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWebsite);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnName}, true));
+                                this.columnID}, true));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnName.AllowDBNull = false;
-                this.columnName.Unique = true;
                 this.columnName.MaxLength = 50;
                 this.columnAdress.MaxLength = 50;
                 this.columnWebsite.MaxLength = 50;
@@ -806,9 +806,9 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public UserRow FindByUsername(string Username) {
+            public UserRow FindByID(int ID) {
                 return ((UserRow)(this.Rows.Find(new object[] {
-                            Username})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -849,14 +849,14 @@ namespace BTS_LJ2_Projekt {
                 this.columnLastname = new global::System.Data.DataColumn("Lastname", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastname);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnUsername}, true));
+                                this.columnID}, true));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnUsername.AllowDBNull = false;
-                this.columnUsername.Unique = true;
                 this.columnUsername.MaxLength = 10;
                 this.columnPassword.MaxLength = 50;
                 this.columnName.MaxLength = 10;
@@ -996,9 +996,9 @@ namespace BTS_LJ2_Projekt {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnRES_NAME;
+            private global::System.Data.DataColumn columnRES_ID;
             
-            private global::System.Data.DataColumn columnUSR_NAME;
+            private global::System.Data.DataColumn columnUSR_ID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1043,17 +1043,17 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn RES_NAMEColumn {
+            public global::System.Data.DataColumn RES_IDColumn {
                 get {
-                    return this.columnRES_NAME;
+                    return this.columnRES_ID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn USR_NAMEColumn {
+            public global::System.Data.DataColumn USR_IDColumn {
                 get {
-                    return this.columnUSR_NAME;
+                    return this.columnUSR_ID;
                 }
             }
             
@@ -1094,18 +1094,12 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VoteRow AddVoteRow(RestaurantsRow parentRestaurantsRowByFK_Vote_Restaurants, UserRow parentUserRowByFK_Vote_User) {
+            public VoteRow AddVoteRow(int RES_ID, int USR_ID) {
                 VoteRow rowVoteRow = ((VoteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
-                        null};
-                if ((parentRestaurantsRowByFK_Vote_Restaurants != null)) {
-                    columnValuesArray[1] = parentRestaurantsRowByFK_Vote_Restaurants[1];
-                }
-                if ((parentUserRowByFK_Vote_User != null)) {
-                    columnValuesArray[2] = parentUserRowByFK_Vote_User[1];
-                }
+                        RES_ID,
+                        USR_ID};
                 rowVoteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowVoteRow);
                 return rowVoteRow;
@@ -1136,8 +1130,8 @@ namespace BTS_LJ2_Projekt {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnRES_NAME = base.Columns["RES_NAME"];
-                this.columnUSR_NAME = base.Columns["USR_NAME"];
+                this.columnRES_ID = base.Columns["RES_ID"];
+                this.columnUSR_ID = base.Columns["USR_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1145,10 +1139,10 @@ namespace BTS_LJ2_Projekt {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnRES_NAME = new global::System.Data.DataColumn("RES_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NAME);
-                this.columnUSR_NAME = new global::System.Data.DataColumn("USR_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUSR_NAME);
+                this.columnRES_ID = new global::System.Data.DataColumn("RES_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRES_ID);
+                this.columnUSR_ID = new global::System.Data.DataColumn("USR_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUSR_ID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1157,8 +1151,6 @@ namespace BTS_LJ2_Projekt {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
-                this.columnRES_NAME.MaxLength = 50;
-                this.columnUSR_NAME.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1355,6 +1347,17 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VoteRow VoteRow {
+                get {
+                    return ((VoteRow)(this.GetParentRow(this.Table.ParentRelations["FK_Vote_Restaurants"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Vote_Restaurants"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsAdressNull() {
                 return this.IsNull(this.tableRestaurants.AdressColumn);
             }
@@ -1375,17 +1378,6 @@ namespace BTS_LJ2_Projekt {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetWebsiteNull() {
                 this[this.tableRestaurants.WebsiteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VoteRow[] GetVoteRows() {
-                if ((this.Table.ChildRelations["FK_Vote_Restaurants"] == null)) {
-                    return new VoteRow[0];
-                }
-                else {
-                    return ((VoteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Vote_Restaurants"])));
-                }
             }
         }
         
@@ -1475,6 +1467,17 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public VoteRow VoteRow {
+                get {
+                    return ((VoteRow)(this.GetParentRow(this.Table.ParentRelations["FK_User_Vote"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_User_Vote"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPasswordNull() {
                 return this.IsNull(this.tableUser.PasswordColumn);
             }
@@ -1508,17 +1511,6 @@ namespace BTS_LJ2_Projekt {
             public void SetLastnameNull() {
                 this[this.tableUser.LastnameColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public VoteRow[] GetVoteRows() {
-                if ((this.Table.ChildRelations["FK_Vote_User"] == null)) {
-                    return new VoteRow[0];
-                }
-                else {
-                    return ((VoteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Vote_User"])));
-                }
-            }
         }
         
         /// <summary>
@@ -1548,80 +1540,80 @@ namespace BTS_LJ2_Projekt {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string RES_NAME {
+            public int RES_ID {
                 get {
                     try {
-                        return ((string)(this[this.tableVote.RES_NAMEColumn]));
+                        return ((int)(this[this.tableVote.RES_IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte RES_NAME in Tabelle Vote ist DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte RES_ID in Tabelle Vote ist DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVote.RES_NAMEColumn] = value;
+                    this[this.tableVote.RES_IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string USR_NAME {
+            public int USR_ID {
                 get {
                     try {
-                        return ((string)(this[this.tableVote.USR_NAMEColumn]));
+                        return ((int)(this[this.tableVote.USR_IDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte USR_NAME in Tabelle Vote ist DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte USR_ID in Tabelle Vote ist DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableVote.USR_NAMEColumn] = value;
+                    this[this.tableVote.USR_IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public RestaurantsRow RestaurantsRow {
-                get {
-                    return ((RestaurantsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Vote_Restaurants"])));
+            public bool IsRES_IDNull() {
+                return this.IsNull(this.tableVote.RES_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetRES_IDNull() {
+                this[this.tableVote.RES_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUSR_IDNull() {
+                return this.IsNull(this.tableVote.USR_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUSR_IDNull() {
+                this[this.tableVote.USR_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public UserRow[] GetUserRows() {
+                if ((this.Table.ChildRelations["FK_User_Vote"] == null)) {
+                    return new UserRow[0];
                 }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Vote_Restaurants"]);
+                else {
+                    return ((UserRow[])(base.GetChildRows(this.Table.ChildRelations["FK_User_Vote"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public UserRow UserRow {
-                get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["FK_Vote_User"])));
+            public RestaurantsRow[] GetRestaurantsRows() {
+                if ((this.Table.ChildRelations["FK_Vote_Restaurants"] == null)) {
+                    return new RestaurantsRow[0];
                 }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Vote_User"]);
+                else {
+                    return ((RestaurantsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Vote_Restaurants"])));
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsRES_NAMENull() {
-                return this.IsNull(this.tableVote.RES_NAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetRES_NAMENull() {
-                this[this.tableVote.RES_NAMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUSR_NAMENull() {
-                return this.IsNull(this.tableVote.USR_NAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUSR_NAMENull() {
-                this[this.tableVote.USR_NAMEColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2106,14 +2098,6 @@ SELECT ID, Name, Adress, Website FROM Restaurants WHERE (Name = @Name)";
                 }
             }
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Adress, string Website, int Original_ID, string Original_Name, string Original_Adress, string Original_Website) {
-            return this.Update(Original_Name, Adress, Website, Original_ID, Original_Name, Original_Adress, Original_Website);
-        }
     }
     
     /// <summary>
@@ -2526,14 +2510,6 @@ SELECT ID, Username, Password, Name, Lastname FROM [User] WHERE (Username = @Use
                 }
             }
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Password, string Name, string Lastname, int Original_ID, string Original_Username, string Original_Password, string Original_Name, string Original_Lastname) {
-            return this.Update(Original_Username, Password, Name, Lastname, Original_ID, Original_Username, Original_Password, Original_Name, Original_Lastname);
-        }
     }
     
     /// <summary>
@@ -2658,8 +2634,8 @@ SELECT ID, Username, Password, Name, Lastname FROM [User] WHERE (Username = @Use
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Vote";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("RES_NAME", "RES_NAME");
-            tableMapping.ColumnMappings.Add("USR_NAME", "USR_NAME");
+            tableMapping.ColumnMappings.Add("RES_NAME", "RES_ID");
+            tableMapping.ColumnMappings.Add("USR_NAME", "USR_ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3034,12 +3010,12 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateUpdatedRows(BTS_LJ2DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._restaurantsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._voteTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._restaurantsTableAdapter.Update(updatedRows));
+                    result = (result + this._voteTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3052,12 +3028,12 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._voteTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._restaurantsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._voteTableAdapter.Update(updatedRows));
+                    result = (result + this._restaurantsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -3071,11 +3047,11 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateInsertedRows(BTS_LJ2DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._restaurantsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._voteTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._restaurantsTableAdapter.Update(addedRows));
+                    result = (result + this._voteTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3087,11 +3063,11 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._voteTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._restaurantsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._voteTableAdapter.Update(addedRows));
+                    result = (result + this._restaurantsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -3105,11 +3081,11 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateDeletedRows(BTS_LJ2DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._voteTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._restaurantsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._voteTableAdapter.Update(deletedRows));
+                    result = (result + this._restaurantsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -3121,11 +3097,11 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._restaurantsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Restaurants.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._voteTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Vote.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._restaurantsTableAdapter.Update(deletedRows));
+                    result = (result + this._voteTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

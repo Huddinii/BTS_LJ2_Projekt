@@ -25,7 +25,7 @@ namespace BTS_LJ2_Projekt
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Sidebar_Click(object sender, RoutedEventArgs e)
         {
             if (Sidebar_Buttons.Visibility == System.Windows.Visibility.Collapsed)
             {
@@ -33,10 +33,15 @@ namespace BTS_LJ2_Projekt
                 (sender as Button).Content = "<";
             }
             else
-            {
+            { 
                 Sidebar_Buttons.Visibility = System.Windows.Visibility.Collapsed;
                 (sender as Button).Content = ">";
             }
+        }
+
+        private void Registrieren(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

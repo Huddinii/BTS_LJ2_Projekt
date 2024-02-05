@@ -55,13 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BTS_LJ2DataSet.cs">
+      <DependentUpon>BTS_LJ2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BTS_LJ2DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BTS_LJ2DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataInterface.cs" />
+    <Compile Include="Restaurant.cs" />
+    <Compile Include="SQLAuto.cs" />
     <Compile Include="SQLCon.cs" />
+    <Compile Include="SQLManual.cs" />
     <Compile Include="User.cs" />
     <Compile Include="VoteEssen.cs" />
     <Page Include="MainWindow.xaml">

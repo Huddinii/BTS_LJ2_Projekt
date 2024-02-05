@@ -16,24 +16,54 @@
 
             </Style.Resources>
         </Style>
-        
+        <Style x:Key="GridButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=roundedCorners}">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="MinWidth" Value="410"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="20,0,20,20"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Content" Value="Wählen"/>
+        </Style>
+        <Style x:Key="GridLabels" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="#242424">
-        <Grid x:Name="Password" HorizontalAlignment="Center" Width="{Binding ElementName=MainWindow, Path=ActualWidth}" Margin="0,0,0,-1" Visibility="Hidden">
-            <Button Content="Login" HorizontalAlignment="Center" Height="20" Margin="0,230,0,0" VerticalAlignment="Top" Width="156">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-
-                </Button.Resources>
-            </Button>
-            <PasswordBox HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top"  Width="156"/>
-            <TextBox HorizontalAlignment="Center" Margin="0,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
-            <Label Content="Username" HorizontalAlignment="Center" Margin="0,114,0,0" VerticalAlignment="Top" Width="70" Foreground="White"/>
-            <Label Content="Passwort" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top" Width="60" Foreground="White"/>
+        <Grid x:Name="Login" HorizontalAlignment="Center" Visibility="Hidden">
+            <Border CornerRadius="15" BorderThickness="1" BorderBrush="White" Height="650" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Label Content="Username" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <TextBox HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
+                    <Label Content="Passwort" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <PasswordBox HorizontalAlignment="Center" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
+                    <Button Content="Login" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
+                    <Button Content="Registrieren" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
         </Grid>
-        <Grid x:Name="Content" HorizontalAlignment="Left">
+        <Grid x:Name="Register" HorizontalAlignment="Center">
+            <Border CornerRadius="15" BorderThickness="1" BorderBrush="White" Height="650" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="Username" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <TextBox x:Name="registerUsername" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
+                    <Label Content="Passwort" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <PasswordBox x:Name="registerPassword" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
+                    <Label Content="Name" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <TextBox x:Name="registerName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
+                    <Label Content="Nachame" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
+                    <TextBox x:Name="registerLastname" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
+                    <Button Content="Registrieren" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center" Click="Registrieren"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid x:Name="Content" HorizontalAlignment="Left" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -47,7 +77,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Button x:Name="SidebarButton" Style="{StaticResource roundedCorners}" Width="40" Height="40" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
+                    <Button x:Name="SidebarButton" Style="{StaticResource roundedCorners}" Width="40" Height="40" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#242424" Foreground="White" Click="Sidebar_Click" BorderBrush="White" Margin="10,10,10,0">&gt;
                     </Button>
                     <Border HorizontalAlignment="Right" BorderBrush="White" BorderThickness="0.4">
                     </Border>
@@ -62,11 +92,11 @@
 
                     <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        <Button x:Name="Auswahl" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
+                        <Button x:Name="Auswahl" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
                         </Button>
-                        <Button x:Name="Profile" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile                            
+                        <Button x:Name="Profile" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile
                         </Button>
-                        <Button x:Name="Gruppe" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" Click="Button_Click" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
+                        <Button x:Name="Gruppe" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,167,5,0" HorizontalAlignment="Stretch">Gruppe
                         </Button>
                     </Grid>
 
@@ -81,26 +111,6 @@
                 </Grid>
             </Grid>
             <Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Stretch">
-                <Grid.Resources>
-                    <Style x:Key="GridButton" TargetType="Button" BasedOn="{StaticResource ResourceKey=roundedCorners}">
-                        <Setter Property="Width" Value="Auto"/>
-                        <Setter Property="MinWidth" Value="410"/>
-                        <Setter Property="Height" Value="40"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="Margin" Value="20,0,20,20"/>
-                        <Setter Property="VerticalAlignment" Value="Bottom"/>
-                        <Setter Property="Background" Value="Gray"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="BorderBrush" Value="White"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="Content" Value="Wählen"/>
-                    </Style>
-                    <Style x:Key="GridLabels" TargetType="Label">
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                    </Style>
-                </Grid.Resources>
                 <Grid x:Name="Choices">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" MaxWidth="450"/>
@@ -114,11 +124,11 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Column="0" Grid.Row="0" Width="Auto">
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5">
-                           
+
                         </Border>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
-                                
+
                                 <Label Content="Name:" Style="{StaticResource GridLabels}"/>
                                 <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
                                 <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
@@ -143,7 +153,7 @@
                         <Button x:Name="Vote2"  Style="{StaticResource GridButton}"/>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="0">
-                        
+
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
@@ -158,7 +168,7 @@
                         <Button x:Name="Vote3" Style="{StaticResource GridButton}"/>
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="0">
-                        
+
                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>

@@ -185,8 +185,8 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
-              <Mapping SourceColumn="RES_NAME" DataSetColumn="RES_NAME" />
-              <Mapping SourceColumn="USR_NAME" DataSetColumn="USR_NAME" />
+              <Mapping SourceColumn="RES_NAME" DataSetColumn="RES_ID" />
+              <Mapping SourceColumn="USR_NAME" DataSetColumn="USR_ID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -195,28 +195,28 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="BTS_LJ2DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="BTS_LJ2DataSet" msprop:Generator_DataSetName="BTS_LJ2DataSet">
+  <xs:element name="BTS_LJ2DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="BTS_LJ2DataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BTS_LJ2DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Restaurants" msprop:Generator_RowEvHandlerName="RestaurantsRowChangeEventHandler" msprop:Generator_RowDeletedName="RestaurantsRowDeleted" msprop:Generator_RowDeletingName="RestaurantsRowDeleting" msprop:Generator_RowEvArgName="RestaurantsRowChangeEvent" msprop:Generator_TablePropName="Restaurants" msprop:Generator_RowChangedName="RestaurantsRowChanged" msprop:Generator_RowChangingName="RestaurantsRowChanging" msprop:Generator_TableClassName="RestaurantsDataTable" msprop:Generator_RowClassName="RestaurantsRow" msprop:Generator_TableVarName="tableRestaurants" msprop:Generator_UserTableName="Restaurants">
+        <xs:element name="Restaurants" msprop:Generator_RowClassName="RestaurantsRow" msprop:Generator_RowEvHandlerName="RestaurantsRowChangeEventHandler" msprop:Generator_RowDeletedName="RestaurantsRowDeleted" msprop:Generator_RowDeletingName="RestaurantsRowDeleting" msprop:Generator_RowEvArgName="RestaurantsRowChangeEvent" msprop:Generator_TablePropName="Restaurants" msprop:Generator_RowChangedName="RestaurantsRowChanged" msprop:Generator_UserTableName="Restaurants" msprop:Generator_RowChangingName="RestaurantsRowChanging" msprop:Generator_TableClassName="RestaurantsDataTable" msprop:Generator_TableVarName="tableRestaurants">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name">
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Adress" msprop:Generator_ColumnPropNameInRow="Adress" msprop:Generator_ColumnPropNameInTable="AdressColumn" msprop:Generator_ColumnVarNameInTable="columnAdress" msprop:Generator_UserColumnName="Adress" minOccurs="0">
+              <xs:element name="Adress" msprop:Generator_UserColumnName="Adress" msprop:Generator_ColumnPropNameInTable="AdressColumn" msprop:Generator_ColumnPropNameInRow="Adress" msprop:Generator_ColumnVarNameInTable="columnAdress" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Website" msprop:Generator_ColumnPropNameInRow="Website" msprop:Generator_ColumnPropNameInTable="WebsiteColumn" msprop:Generator_ColumnVarNameInTable="columnWebsite" msprop:Generator_UserColumnName="Website" minOccurs="0">
+              <xs:element name="Website" msprop:Generator_UserColumnName="Website" msprop:Generator_ColumnPropNameInTable="WebsiteColumn" msprop:Generator_ColumnPropNameInRow="Website" msprop:Generator_ColumnVarNameInTable="columnWebsite" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -226,32 +226,32 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="User" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowEvArgName="UserRowChangeEvent" msprop:Generator_TablePropName="User" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_RowClassName="UserRow" msprop:Generator_TableVarName="tableUser" msprop:Generator_UserTableName="User">
+        <xs:element name="User" msprop:Generator_RowClassName="UserRow" msprop:Generator_RowEvHandlerName="UserRowChangeEventHandler" msprop:Generator_RowDeletedName="UserRowDeleted" msprop:Generator_RowDeletingName="UserRowDeleting" msprop:Generator_RowEvArgName="UserRowChangeEvent" msprop:Generator_TablePropName="User" msprop:Generator_RowChangedName="UserRowChanged" msprop:Generator_UserTableName="User" msprop:Generator_RowChangingName="UserRowChanging" msprop:Generator_TableClassName="UserDataTable" msprop:Generator_TableVarName="tableUser">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="Username" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_ColumnVarNameInTable="columnUsername" msprop:Generator_UserColumnName="Username">
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="Username" msprop:Generator_UserColumnName="Username" msprop:Generator_ColumnPropNameInTable="UsernameColumn" msprop:Generator_ColumnPropNameInRow="Username" msprop:Generator_ColumnVarNameInTable="columnUsername">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Password" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnVarNameInTable="columnPassword" msprop:Generator_UserColumnName="Password" minOccurs="0">
+              <xs:element name="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnVarNameInTable="columnPassword" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" minOccurs="0">
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Lastname" msprop:Generator_ColumnPropNameInRow="Lastname" msprop:Generator_ColumnPropNameInTable="LastnameColumn" msprop:Generator_ColumnVarNameInTable="columnLastname" msprop:Generator_UserColumnName="Lastname" minOccurs="0">
+              <xs:element name="Lastname" msprop:Generator_UserColumnName="Lastname" msprop:Generator_ColumnPropNameInTable="LastnameColumn" msprop:Generator_ColumnPropNameInRow="Lastname" msprop:Generator_ColumnVarNameInTable="columnLastname" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -261,24 +261,12 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Vote" msprop:Generator_RowEvHandlerName="VoteRowChangeEventHandler" msprop:Generator_RowDeletedName="VoteRowDeleted" msprop:Generator_RowDeletingName="VoteRowDeleting" msprop:Generator_RowEvArgName="VoteRowChangeEvent" msprop:Generator_TablePropName="Vote" msprop:Generator_RowChangedName="VoteRowChanged" msprop:Generator_RowChangingName="VoteRowChanging" msprop:Generator_TableClassName="VoteDataTable" msprop:Generator_RowClassName="VoteRow" msprop:Generator_TableVarName="tableVote" msprop:Generator_UserTableName="Vote">
+        <xs:element name="Vote" msprop:Generator_RowClassName="VoteRow" msprop:Generator_RowEvHandlerName="VoteRowChangeEventHandler" msprop:Generator_RowDeletedName="VoteRowDeleted" msprop:Generator_RowDeletingName="VoteRowDeleting" msprop:Generator_RowEvArgName="VoteRowChangeEvent" msprop:Generator_TablePropName="Vote" msprop:Generator_RowChangedName="VoteRowChanged" msprop:Generator_UserTableName="Vote" msprop:Generator_RowChangingName="VoteRowChanging" msprop:Generator_TableClassName="VoteDataTable" msprop:Generator_TableVarName="tableVote">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_UserColumnName="ID" type="xs:int" />
-              <xs:element name="RES_NAME" msprop:Generator_ColumnPropNameInRow="RES_NAME" msprop:Generator_ColumnPropNameInTable="RES_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnRES_NAME" msprop:Generator_UserColumnName="RES_NAME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="USR_NAME" msprop:Generator_ColumnPropNameInRow="USR_NAME" msprop:Generator_ColumnPropNameInTable="USR_NAMEColumn" msprop:Generator_ColumnVarNameInTable="columnUSR_NAME" msprop:Generator_UserColumnName="USR_NAME" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="RES_ID" msprop:Generator_UserColumnName="RES_ID" msprop:Generator_ColumnPropNameInTable="RES_IDColumn" msprop:Generator_ColumnPropNameInRow="RES_ID" msprop:Generator_ColumnVarNameInTable="columnRES_ID" type="xs:int" minOccurs="0" />
+              <xs:element name="USR_ID" msprop:Generator_UserColumnName="USR_ID" msprop:Generator_ColumnPropNameInTable="USR_IDColumn" msprop:Generator_ColumnPropNameInRow="USR_ID" msprop:Generator_ColumnVarNameInTable="columnUSR_ID" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -286,11 +274,11 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Restaurants" />
-      <xs:field xpath="mstns:Name" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
     <xs:unique name="User_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:User" />
-      <xs:field xpath="mstns:Username" />
+      <xs:field xpath="mstns:ID" />
     </xs:unique>
     <xs:unique name="Vote_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Vote" />
@@ -299,8 +287,8 @@ SELECT ID, RES_NAME, USR_NAME FROM Vote WHERE (ID = @ID)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Vote_Restaurants" msdata:parent="Restaurants" msdata:child="Vote" msdata:parentkey="Name" msdata:childkey="RES_NAME" msprop:Generator_UserParentTable="Restaurants" msprop:Generator_UserChildTable="Vote" msprop:Generator_RelationVarName="relationFK_Vote_Restaurants" msprop:Generator_ChildPropName="GetVoteRows" msprop:Generator_ParentPropName="RestaurantsRow" msprop:Generator_UserRelationName="FK_Vote_Restaurants" />
-      <msdata:Relationship name="FK_Vote_User" msdata:parent="User" msdata:child="Vote" msdata:parentkey="Username" msdata:childkey="USR_NAME" msprop:Generator_UserParentTable="User" msprop:Generator_UserChildTable="Vote" msprop:Generator_RelationVarName="relationFK_Vote_User" msprop:Generator_ChildPropName="GetVoteRows" msprop:Generator_ParentPropName="UserRow" msprop:Generator_UserRelationName="FK_Vote_User" />
+      <msdata:Relationship name="FK_User_Vote" msdata:parent="Vote" msdata:child="User" msdata:parentkey="USR_ID" msdata:childkey="ID" msprop:Generator_UserParentTable="Vote" msprop:Generator_UserChildTable="User" msprop:Generator_RelationVarName="relationFK_User_Vote" msprop:Generator_UserRelationName="FK_User_Vote" msprop:Generator_ChildPropName="GetUserRows" msprop:Generator_ParentPropName="VoteRow" />
+      <msdata:Relationship name="FK_Vote_Restaurants" msdata:parent="Vote" msdata:child="Restaurants" msdata:parentkey="RES_ID" msdata:childkey="ID" msprop:Generator_UserParentTable="Vote" msprop:Generator_UserChildTable="Restaurants" msprop:Generator_RelationVarName="relationFK_Vote_Restaurants" msprop:Generator_UserRelationName="FK_Vote_Restaurants" msprop:Generator_ChildPropName="GetRestaurantsRows" msprop:Generator_ParentPropName="VoteRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
