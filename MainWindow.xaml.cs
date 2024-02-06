@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,15 @@ namespace BTS_LJ2_Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal SQLManual sql;
+        internal SQLManual sqlM;
         internal User usr;
+        internal SQLAuto sqlA;
+        internal ObservableCollection<Restaurant> restaurants = new ObservableCollection<Restaurant>();
         public MainWindow()
         {
             InitializeComponent();
-            //sql = new SQLManual();
+            sqlM = new SQLManual();
+            sqlA = new SQLAuto();
         }
 
         private void Sidebar_Click(object sender, RoutedEventArgs e)
@@ -44,9 +48,13 @@ namespace BTS_LJ2_Projekt
 
         private void Registrieren(object sender, RoutedEventArgs e)
         {
-            sql= new SQLManual();
-            sql.Insert("User","Username,Password,Name,Lastname",$"{registerUsername.Text},{registerPassword.Password},{registerName.Text},{registerLastname.Text}");
-
+            string[] Fields = {"Username", "Password", "Name", "Lastname"};
+            string[] Values = { $"{registerUsername.Text}", $"{registerPassword.Password}", $"{registerName.Text}", $"{registerLastname.Text}" };
+            sqlM.Insert("User",Fields,Values);
+            Login.Visibility = System.Windows.Visibility.Hidden;
+            Register.Visibility = System.Windows.Visibility.Hidden;
+            Content.Visibility = System.Windows.Visibility.Visible;
+            FillChoices();
 
         }
 
@@ -57,6 +65,26 @@ namespace BTS_LJ2_Projekt
         }
 
         private void clickLogin(object sender, RoutedEventArgs e)
+        {
+            if (sqlM.Login($"{loginUsername.Text}", $"{loginPassword.Password}"))
+            {
+                Login.Visibility = System.Windows.Visibility.Hidden;
+                Register.Visibility = System.Windows.Visibility.Hidden;
+                Content.Visibility = System.Windows.Visibility.Visible;
+                FillChoices();
+            }
+            else
+            {
+                loginError.Content = "Einloggen fehlgeschlegen bitte Prüfen \n Sie ihre Daten und versuchen es erneut";
+            }
+        }
+
+        private void FillChoices()
+        {
+            sqlA.getData();
+        }
+
+        private void wählen(object sender, RoutedEventArgs e)
         {
 
         }
