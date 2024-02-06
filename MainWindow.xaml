@@ -36,25 +36,25 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="#242424">
-        <Grid x:Name="Login" HorizontalAlignment="Center" Visibility="Hidden">
+        <Grid x:Name="Login" HorizontalAlignment="Center">
             <Border CornerRadius="15" BorderThickness="1" BorderBrush="White" Height="650" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <Label Content="Username" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
                     <TextBox HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
                     <Label Content="Passwort" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
-                    <PasswordBox HorizontalAlignment="Center" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
-                    <Button Content="Login" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
-                    <Button Content="Registrieren" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center"/>
+                    <PasswordBox HorizontalAlignment="Center" PasswordChar="*" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
+                    <Button Content="Login" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center" Click="clickLogin"/>
+                    <Button Content="Registrieren" Style="{StaticResource GridButton}" HorizontalAlignment="Center" Height="40" VerticalAlignment="Center" Click="gotoRegister"/>
                 </StackPanel>
             </Border>
         </Grid>
-        <Grid x:Name="Register" HorizontalAlignment="Center">
+        <Grid x:Name="Register" HorizontalAlignment="Center" Visibility="Hidden">
             <Border CornerRadius="15" BorderThickness="1" BorderBrush="White" Height="650" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Label Content="Username" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
                     <TextBox x:Name="registerUsername" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
                     <Label Content="Passwort" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
-                    <PasswordBox x:Name="registerPassword" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
+                    <PasswordBox x:Name="registerPassword" PasswordChar="*" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="410" FontSize="30" Margin="0,10,0,20"/>
                     <Label Content="Name" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
                     <TextBox x:Name="registerName" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="30" Margin="0,10,0,20" Width="410"/>
                     <Label Content="Nachame" HorizontalAlignment="Center" Style="{StaticResource GridLabels}" FontSize="30" VerticalAlignment="Center"/>
@@ -63,7 +63,7 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <Grid x:Name="Content" HorizontalAlignment="Left" Visibility="Collapsed">
+        <Grid x:Name="Content" HorizontalAlignment="Left" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>

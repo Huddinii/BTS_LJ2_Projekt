@@ -20,9 +20,12 @@ namespace BTS_LJ2_Projekt
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal SQLManual sql;
+        internal User usr;
         public MainWindow()
         {
             InitializeComponent();
+            //sql = new SQLManual();
         }
 
         private void Sidebar_Click(object sender, RoutedEventArgs e)
@@ -40,6 +43,20 @@ namespace BTS_LJ2_Projekt
         }
 
         private void Registrieren(object sender, RoutedEventArgs e)
+        {
+            sql= new SQLManual();
+            sql.Insert("User","Username,Password,Name,Lastname",$"{registerUsername.Text},{registerPassword.Password},{registerName.Text},{registerLastname.Text}");
+
+
+        }
+
+        private void gotoRegister(object sender, RoutedEventArgs e)
+        {
+            Login.Visibility = System.Windows.Visibility.Hidden;
+            Register.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void clickLogin(object sender, RoutedEventArgs e)
         {
 
         }

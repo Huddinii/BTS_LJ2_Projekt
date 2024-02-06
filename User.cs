@@ -14,9 +14,17 @@ namespace BTS_LJ2_Projekt
         private string name;
         private string lastname;
 
-        public User()
-        {
+        public string Username { get; }
+        public string Password { get; }
+        public string Name { get; }
+        public string Lastname { get; }
 
+        public User(string Username,string Password, string Name, string Lastname)
+        {
+            username = Username;
+            password = Password;
+            name = Name;
+            lastname = Lastname;
         }
     }
 }
