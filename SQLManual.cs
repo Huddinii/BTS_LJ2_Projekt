@@ -25,13 +25,13 @@ namespace BTS_LJ2_Projekt
         }
         public void Insert(string Table,string Fields, string Values)
         {
-            string query = $"INSERT INTO dbo.{Table} ({Fields}) VALUES ({Values})";
+            string query = $"INSERT INTO {Table} ({Fields}) VALUES ({Values})";
             cmd = new SqlCommand(query,this.Con);
         }
 
         public bool Login(string username, string password)
         {
-            string query = $"SELECT * FROM USER WHERE Username={username} and Password={password}";
+            string query = $"SELECT * FROM USER WHERE (Username={username} and Password={password})";
             cmd = new SqlCommand (query,this.Con);
             cmd.Connection.Open();
 
