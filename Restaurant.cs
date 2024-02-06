@@ -11,17 +11,14 @@ namespace BTS_LJ2_Projekt
         private string name;
         private string adresse;
         private string speisekarte;
-        private int stimmen;
+        private string stimmen;
 
         public Restaurant(string Name, string Adresse, string Speisekarte) 
         { 
             name = Name;
             adresse = Adresse;
             speisekarte = Speisekarte;
-            stimmen = 0;
+            stimmen = "0";
         }
-
-        int Stimmen { get { return stimmen; } set {stimmen = value; } }
-
     }
 }

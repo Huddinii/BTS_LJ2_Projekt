@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BTS_LJ2_Projekt"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920"
-        x:Name="Window">
+        >
     <Window.Resources>
         <Style x:Key="roundedCorners" TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             <Style.Resources>
@@ -93,7 +93,7 @@
 
                     <Grid Grid.Row="0" x:Name="Sidebar_Buttons" Visibility="Collapsed">
                         <!--<Rectangle x:Name="rect" Width="100" VerticalAlignment="Stretch" Fill="#99000000" Visibility="Collapsed"/>-->
-                        <Button x:Name="Restaurants" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
+                        <Button x:Name="btnRestaurants" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,67,5,0" HorizontalAlignment="Stretch">Auswahl
                         </Button>
                         <Button x:Name="Profil" Style="{StaticResource roundedCorners}" Height="40" Width="120" FontSize="16" VerticalAlignment="Top" Background="#242424" Foreground="White" BorderBrush="White" Margin="5,117,5,0" HorizontalAlignment="Stretch">Profile
                         </Button>
@@ -110,7 +110,7 @@
                 </Grid>
             </Grid>
             <Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Stretch">
-                <ItemsControl ItemsSource="{Binding Restaurants}">
+                <ItemsControl ItemsSource="{Binding ResGrid, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <Grid x:Name="Choices">
@@ -129,7 +129,6 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-
                             <Grid Width="Auto">
                                 <Border BorderBrush="White" BorderThickness="1" CornerRadius="10,10,10,10" Margin="5,5,5,5"/>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
@@ -138,7 +137,7 @@
                                         <Label Content="{Binding Name}" ContentStringFormat="Name: {}" Style="{StaticResource GridLabels}"/>
                                         <Label Content="{Binding Adresse}" ContentStringFormat="Adresse: {}" Style="{StaticResource GridLabels}"/>
                                         <Label Content="{Binding Speisekarte}" ContentStringFormat="Speisekarte: {}" Style="{StaticResource GridLabels}"/>
-                                        <Label Content="{Binding Stimmen}" ContentStringFormat="Stimmen: {0}" Style="{StaticResource GridLabels}"/>
+                                        <Label Content="{Binding Stimmen}" ContentStringFormat="Stimmen: {}" Style="{StaticResource GridLabels}"/>
 
                                     </StackPanel.Children>
                                 </StackPanel>
@@ -147,8 +146,8 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <!--<Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Stretch">
-                <Grid x:Name="Choices">
+                <!--<Grid x:Name="Main" Grid.Column="1" HorizontalAlignment="Stretch">-->
+                <!--<Grid x:Name="Choices">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" MaxWidth="450"/>
                         <ColumnDefinition Width="auto" MaxWidth="450"/>
@@ -164,10 +163,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest1name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest1adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest1speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest1stimmen" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -178,10 +177,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest2name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest2adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest2speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest2stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -193,10 +192,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest3name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest3adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest3speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest3stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -208,10 +207,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest4name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest4adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest4speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest4stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -222,10 +221,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest5name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest5adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest5speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest5stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -236,10 +235,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest6name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest6adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest6speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest6stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -251,10 +250,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest7name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest7adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest7speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest7stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>
@@ -266,10 +265,10 @@
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10">
                             <StackPanel.Children>
 
-                                <Label Content="Name:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Adresse:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
-                                <Label Content="Stimmen:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest8name" Content="Name:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest8adresse" Content="Adresse:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest8speisekarte" Content="Speisekarte:" Style="{StaticResource GridLabels}"/>
+                                <Label x:Name="Rest8stimmen" Content="Stimmen:" Style="{StaticResource GridLabels}"/>
 
                             </StackPanel.Children>
                         </StackPanel>

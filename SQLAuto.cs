@@ -31,7 +31,7 @@ namespace BTS_LJ2_Projekt
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Restaurant res = new Restaurant(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString());
-                mw.restaurants.Add(res);
+                mw.ResGrid.Add(res);
             }
         }
     }

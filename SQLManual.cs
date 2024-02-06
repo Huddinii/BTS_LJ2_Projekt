@@ -14,13 +14,10 @@ namespace BTS_LJ2_Projekt
 {
     internal class SQLManual : SQLCon
     {
+        
         public SQLManual()
         {
             this.con.Open();
-        }
-        public override void getData()
-        {
-            throw new NotImplementedException();
         }
         public void Insert(string Table,string[] Fields, string[] Values)
         {
@@ -52,15 +49,13 @@ namespace BTS_LJ2_Projekt
 
         public bool Login(string username, string password)
         {
-            string query = $"SELECT * FROM [USER] WHERE Username='{username}' AND Password='{password}'";
-            this.cmd = new SqlCommand (query,this.Con);
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(this.cmd);
-            dt = new DataTable();
+            query = $"SELECT * FROM [USER] WHERE Username='{username}' AND Password='{password}'";
+            this.getData();
             dt.Columns.Add(new DataColumn("username"));
             dt.Columns.Add(new DataColumn("password"));
             dt.Columns.Add(new DataColumn("name"));
             dt.Columns.Add(new DataColumn("lastname"));
-            dataAdapter.Fill(dt);
+            this.dataAdapter.Fill(dt);
             int test = dt.Rows.Count;
             Console.WriteLine(test.ToString());
             if (dt.Rows.Count>0)

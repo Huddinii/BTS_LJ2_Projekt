@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace BTS_LJ2_Projekt
 {
@@ -24,10 +25,12 @@ namespace BTS_LJ2_Projekt
         internal SQLManual sqlM;
         internal User usr;
         internal SQLAuto sqlA;
-        internal ObservableCollection<Restaurant> restaurants = new ObservableCollection<Restaurant>();
+        internal List<Restaurant> ResGrid = new List<Restaurant>();
+
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
             sqlM = new SQLManual();
             sqlA = new SQLAuto();
         }

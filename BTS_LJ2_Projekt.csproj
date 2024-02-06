@@ -83,7 +83,6 @@
     <Compile Include="SQLCon.cs" />
     <Compile Include="SQLManual.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="VoteEssen.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
